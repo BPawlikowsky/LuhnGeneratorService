@@ -10,4 +10,8 @@ public class LuhnService {
     public boolean verifyNumber(String number) {
         return Luhn.luhnVerifyNumber(number);
     }
+
+    public int generateDigit(String number) {
+        return Luhn.generateDigit(number);
+    }
 }

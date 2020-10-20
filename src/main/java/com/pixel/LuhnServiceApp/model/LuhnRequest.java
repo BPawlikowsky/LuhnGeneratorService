@@ -6,10 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @Getter
-public class VerifyRequest {
+public class LuhnRequest {
     private String number;
     @JsonCreator
-    public VerifyRequest(@JsonProperty(value = "number", required = true) String number) {
+    public LuhnRequest(@JsonProperty(value = "number", required = true) String number) {
         this.number = number;
     }
 }

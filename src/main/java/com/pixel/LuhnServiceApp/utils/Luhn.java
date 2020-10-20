@@ -33,6 +33,10 @@ public class Luhn {
             return false;
     }
 
+    public static int generateDigit(String number) {
+        return luhnControlDigit(luhnGenerateSum(number));
+    }
+
     private static Integer luhnGenerateSum(String parseNumber) {
 
         int sum = 0;
