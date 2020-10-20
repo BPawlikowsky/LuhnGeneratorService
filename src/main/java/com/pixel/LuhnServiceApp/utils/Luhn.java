@@ -10,23 +10,24 @@ public class Luhn {
     private static final int WEIGHT_2 = 2;
 
     public static Boolean luhnVerifyNumber(String number) {
-        if(number.isEmpty())
-            return false;
-        if(number.contains(" ")) {
-            StringBuilder newNumber = new StringBuilder();
-            for (char c : number.toCharArray()) {
-                if(Character.isDigit(c))
-                    newNumber.append(c);
-            }
-            number = newNumber.toString();
+
+        StringBuilder newNumber = new StringBuilder();
+        for (char c : number.toCharArray()) {
+            if(Character.isDigit(c))
+                newNumber.append(c);
         }
-        String numberBeingChecked = number.substring(0, number.length()-1);
-        String expectedDigit = String.valueOf(number.charAt(number.length()-1));
+        String cleanNumber = newNumber.toString();
+
+        if(cleanNumber.length() == 0)
+            return false;
+
+        String numberBeingChecked = cleanNumber.substring(0, cleanNumber.length()-1);
+        String expectedDigit = String.valueOf(cleanNumber.charAt(cleanNumber.length()-1));
 
         int sum = luhnGenerateSum(numberBeingChecked);
 
         int control = luhnControlDigit(sum);
-        if((sum + control)%10 == 0)
+        if((sum + control)%10 == 0 && control == Integer.parseInt(expectedDigit))
             return true;
         else
             return false;
