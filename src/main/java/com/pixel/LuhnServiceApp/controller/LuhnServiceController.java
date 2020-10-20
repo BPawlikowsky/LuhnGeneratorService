@@ -36,9 +36,13 @@ public class LuhnServiceController {
     public ResponseEntity<String> generateDigit(@RequestBody LuhnRequest request) throws JsonProcessingException {
 
         ObjectMapper objMap = new ObjectMapper();
-        DigitResponse response = new DigitResponse(luhnService.generateDigit(request.getNumber()));
-        String stringResponse = objMap.writeValueAsString(response);
+        int generatedDigit = luhnService.generateDigit(request.getNumber());
+        if(request.getNumber().length() > 0 && generatedDigit != -1) {
+            DigitResponse response = new DigitResponse(generatedDigit);
+            String stringResponse = objMap.writeValueAsString(response);
 
-        return new ResponseEntity<String>(stringResponse, HttpStatus.OK);
+            return new ResponseEntity<String>(stringResponse, HttpStatus.OK);
+        }
+        else return new ResponseEntity<>("Wrong Input or no input", HttpStatus.BAD_REQUEST);
     }
 }

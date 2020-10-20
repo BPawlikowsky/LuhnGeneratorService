@@ -1,28 +1,23 @@
 package com.pixel.LuhnServiceApp.utils;
 
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Luhn {
     private static final int WEIGHT_1 = 1;
     private static final int WEIGHT_2 = 2;
 
-    public static Boolean luhnVerifyNumber(String number) {
-
+    public static String cleanupNumber(String number) {
         StringBuilder newNumber = new StringBuilder();
         for (char c : number.toCharArray()) {
             if(Character.isDigit(c))
                 newNumber.append(c);
         }
-        String cleanNumber = newNumber.toString();
 
-        if(cleanNumber.length() == 0)
-            return false;
+        return newNumber.toString();
+    }
 
-        String numberBeingChecked = cleanNumber.substring(0, cleanNumber.length()-1);
-        String expectedDigit = String.valueOf(cleanNumber.charAt(cleanNumber.length()-1));
+    public static Boolean luhnVerifyNumber(String number) {
+
+        String numberBeingChecked = number.substring(0, number.length()-1);
+        String expectedDigit = String.valueOf(number.charAt(number.length()-1));
 
         int sum = luhnGenerateSum(numberBeingChecked);
 

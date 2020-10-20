@@ -12,6 +12,10 @@ public class LuhnService {
     }
 
     public int generateDigit(String number) {
-        return Luhn.generateDigit(number);
+        String cleanNumber = Luhn.cleanupNumber(number);
+        if(cleanNumber.length() > 0)
+            return Luhn.generateDigit(number);
+        else
+            return -1;
     }
 }
