@@ -222,5 +222,4 @@ public class CalculateRouteNNControllerTest {
         }
         assertEquals(expectedResponse, actualResponse);
     }
-
 }
