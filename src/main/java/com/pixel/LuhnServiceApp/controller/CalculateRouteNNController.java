@@ -29,7 +29,7 @@ public class CalculateRouteNNController {
     @PostMapping("/route")
     public ResponseEntity<String> calculateRoute(@RequestBody RouteRequest request) throws JsonProcessingException {
 
-        if(!request.getListOfPoints().isEmpty()) {
+        if(!request.getListOfPoints().isEmpty() || request.getListOfPoints().size() <= 1) {
             List<Node> nodes = calculateRouteNNService.pointsToNodes(request.getListOfPoints());
             Route route = calculateRouteNNService.calculateRoute(nodes.get(0), nodes);
             ObjectMapper objMap = new ObjectMapper();
@@ -38,13 +38,13 @@ public class CalculateRouteNNController {
 
             return new ResponseEntity<String>(stringResponse, HttpStatus.OK);
         } else
-            return new ResponseEntity<String>("Empty List of Points", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>("Empty or one item List of Points", HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/routes")
     public ResponseEntity<String> calculateRoutes(@RequestBody RouteRequest request) throws JsonProcessingException {
 
-        if(!request.getListOfPoints().isEmpty()) {
+        if(!request.getListOfPoints().isEmpty() || request.getListOfPoints().size() <= 1) {
             List<Node> nodes = calculateRouteNNService.pointsToNodes(request.getListOfPoints());
             List<Route> routes = calculateRouteNNService.calculateRoutes(nodes);
             List<String> sRoutes = new ArrayList<>();
@@ -60,6 +60,6 @@ public class CalculateRouteNNController {
 
             return new ResponseEntity<String>(stringResponse, HttpStatus.OK);
         } else
-            return new ResponseEntity<String>("Empty List of Points", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>("Empty or one item List of Points", HttpStatus.BAD_REQUEST);
     }
 }
