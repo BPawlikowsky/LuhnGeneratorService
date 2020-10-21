@@ -13,7 +13,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>LuhnServiceApp</name>
 	<description>Zadanie dla Pixel Technology</description>
-
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -44,6 +49,12 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.grumlimited</groupId>
+			<artifactId>geocalc</artifactId>
+			<version>0.6</version>
 		</dependency>
 	</dependencies>
 
