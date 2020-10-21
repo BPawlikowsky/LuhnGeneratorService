@@ -1,4 +1,7 @@
-package com.pixel.LuhnServiceApp.model;
+package com.pixel.LuhnServiceApp.utils;
+
+import com.pixel.LuhnServiceApp.model.Node;
+import com.pixel.LuhnServiceApp.model.PathBetweenNodes;
 
 import java.util.*;
 

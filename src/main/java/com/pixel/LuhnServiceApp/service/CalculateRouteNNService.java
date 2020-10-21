@@ -1,6 +1,7 @@
 package com.pixel.LuhnServiceApp.service;
 
 import com.pixel.LuhnServiceApp.model.*;
+import com.pixel.LuhnServiceApp.utils.Travese;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,13 +24,16 @@ public class CalculateRouteNNService {
         List<PathBetweenNodes> route = Travese.calculateRoute(nodes.get(0), nodes);
         double distance = 0;
         StringBuilder sRoute = new StringBuilder();
+        sRoute.append(nodes.get(0).getName());
+        sRoute.append("->");
         for (PathBetweenNodes path : route) {
-            sRoute.append(path.getNodeA().getName());
-            sRoute.append("->");
             sRoute.append(path.getNodeB().getName());
             sRoute.append("->");
             distance += path.getDistance();
         }
+        sRoute.delete(sRoute.length() - 2, sRoute.length());
+        //Converting to kilometers
+        distance = (distance / 1000);
         return new Route(sRoute.toString(), distance);
     }
 }
