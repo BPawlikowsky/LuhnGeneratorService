@@ -1,4 +1,4 @@
-package com.pixel.LuhnServiceApp.model;
+package com.pixel.LuhnServiceApp.model.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

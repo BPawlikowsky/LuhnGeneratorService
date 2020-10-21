@@ -2,16 +2,14 @@ package com.pixel.LuhnServiceApp.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pixel.LuhnServiceApp.model.DigitResponse;
-import com.pixel.LuhnServiceApp.model.LuhnRequest;
-import com.pixel.LuhnServiceApp.model.VerifyResponse;
+import com.pixel.LuhnServiceApp.model.responses.DigitResponse;
+import com.pixel.LuhnServiceApp.model.requests.LuhnRequest;
+import com.pixel.LuhnServiceApp.model.responses.VerifyResponse;
 import com.pixel.LuhnServiceApp.service.LuhnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.sql.DataSource;
 
 @RestController
 @CrossOrigin

@@ -8,7 +8,6 @@ public class Travese {
         LinkedList<PathBetweenNodes> route = new LinkedList<>();
         HashSet<Node> visitedNodes = new HashSet<>();
         Node visitingNode = startNode;
-        System.out.println(startNode.getDistances().toString());
 
         boolean unvisited = true;
         while (unvisited) {

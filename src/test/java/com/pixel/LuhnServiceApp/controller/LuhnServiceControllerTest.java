@@ -2,9 +2,9 @@ package com.pixel.LuhnServiceApp.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pixel.LuhnServiceApp.model.DigitResponse;
-import com.pixel.LuhnServiceApp.model.LuhnRequest;
-import com.pixel.LuhnServiceApp.model.VerifyResponse;
+import com.pixel.LuhnServiceApp.model.responses.DigitResponse;
+import com.pixel.LuhnServiceApp.model.requests.LuhnRequest;
+import com.pixel.LuhnServiceApp.model.responses.VerifyResponse;
 import com.pixel.LuhnServiceApp.service.LuhnService;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,9 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.math.BigDecimal;
-import java.util.Currency;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;

@@ -1,4 +1,4 @@
-package com.pixel.LuhnServiceApp.model;
+package com.pixel.LuhnServiceApp.model.responses;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

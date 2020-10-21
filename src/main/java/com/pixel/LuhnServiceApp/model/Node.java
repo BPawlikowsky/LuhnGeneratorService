@@ -4,7 +4,6 @@ import com.grum.geocalc.Coordinate;
 import com.grum.geocalc.EarthCalc;
 import com.grum.geocalc.Point;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.*;
 
@@ -28,6 +27,8 @@ public class Node {
     public void calculateDistances(List<Node> nodes) {
         HashMap<Double, Node> dist = new HashMap<>();
         SortedMap<Double, Node> temp = new TreeMap<>();
+        //geocalc's data types for converting lat and lng in WGS84 to the internal coordinate system
+        //Point will help to calculate distances between locations
         Coordinate originLat = Coordinate.fromDegrees(latitude);
         Coordinate originLng = Coordinate.fromDegrees(longitude);
         Point origin = Point.at(originLat, originLng);
