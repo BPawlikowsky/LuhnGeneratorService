@@ -10,56 +10,45 @@ public class Travese {
     public static LinkedList<PathBetweenNodes> calculateRoute(Node startNode, List<Node> nodes) {
         LinkedList<PathBetweenNodes> route = new LinkedList<>();
         HashSet<Node> visitedNodes = new HashSet<>();
-        Node visitingNode = startNode;
+        Node visiting = startNode;
 
-        boolean unvisited = true;
-        while (unvisited) {
+        boolean unvisitedLeft = true;
+        while (unvisitedLeft) {
             double distance;
             int ittr = 0;
-            List<Double> distances = new ArrayList<>(visitingNode.getDistances().keySet());
-            distance = distances.get(ittr);
-            Node checknode = visitingNode.getDistances().get(distance);
-            while (visitedNodes.contains(checknode)) {
+            //Distances from closest to furthest, also keys to Nodes
+            List<Double> distances = new ArrayList<>(visiting.getDistances().keySet());
 
+            //Checking if the closest node was visited
+            distance = distances.get(ittr);
+            Node checknode = visiting.getDistances().get(distance);
+            while (visitedNodes.contains(checknode)) {
                 ittr++;
+                //Checks if all nodes has been visited
                 if(ittr == distances.size()) {
-                    unvisited = false;
-                    route.add(new PathBetweenNodes(visitingNode, startNode, distance));
+                    unvisitedLeft = false;
+                    route.add(new PathBetweenNodes(visiting, startNode, distance));
                     break;
                 }
 
                 distance = distances.get(ittr);
-                checknode = visitingNode.getDistances().get(distance);
+                checknode = visiting.getDistances().get(distance);
             }
-            if(unvisited) {
-                Node nextNode = visitingNode.getDistances().get(distance);
-                route.add(new PathBetweenNodes(visitingNode, nextNode, distance));
 
-                visitedNodes.add(visitingNode);
+            //If there are any nodes to visit
+            if(unvisitedLeft) {
+                //Set next node to be visited
+                Node next = visiting.getDistances().get(distance);
+                route.add(new PathBetweenNodes(visiting, next, distance));
 
-                visitingNode = nextNode;
+                //Mark as visited
+                visitedNodes.add(visiting);
+
+                //Traverse
+                visiting = next;
             }
         }
 
         return route;
-    }
-
-
-    public static void main(String[] args) {
-        Node n1 = new Node(51.0, -0.29, "A");
-        Node n2 = new Node(55.0, 2.0, "B");
-        Node n3 = new Node(25.0, -2.0, "C");
-        Node n4 = new Node(45.0, 2.0, "D");
-        Node n5 = new Node(15.0, -2.0, "E");
-
-        List<Node> nodes = List.of(n1, n2, n3, n4, n5);
-        nodes.stream().forEach(n -> {
-            n.calculateDistances(nodes);
-        });
-
-        for(Node n : nodes){
-            LinkedList<PathBetweenNodes> route = Travese.calculateRoute(n, nodes);
-        }
-
     }
 }
