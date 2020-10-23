@@ -23,8 +23,7 @@ public class CalculateRouteNNService {
             distance += path.getDistance();
         }
         sRoute.delete(sRoute.length() - 2, sRoute.length());
-        //Converting to kilometers
-        distance = (distance / 1000);
+
         return new Route(sRoute.toString(), distance);
     }
 
