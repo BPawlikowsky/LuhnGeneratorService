@@ -48,8 +48,8 @@ public class CalculateRouteNNControllerTest {
         );
         ObjectMapper om = new ObjectMapper();
         RouteResponse dtoExpectedResponse = new RouteResponse(
-                "A->D->E->C->B->A",
-                8906.77392246409
+                "A->B->C->D->E->A",
+                8906.35838030993
         );
         String stringExpectedResponse = "";
         try {

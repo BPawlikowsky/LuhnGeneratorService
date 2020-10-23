@@ -27,8 +27,8 @@ public class CalculateRouteNNServiceTest {
     @Test
     public void calculateRoute_OK() {
         Route expectedResponse = new Route(
-                "A->D->E->C->B->A",
-                8906.77392246409
+                "A->B->C->D->E->A",
+                8906.35838030993
         );
         List<Node> request = List.of(
                 new Node(51.0, 0.2, "A"),
